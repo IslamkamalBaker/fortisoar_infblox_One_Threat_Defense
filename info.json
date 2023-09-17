@@ -1,0 +1,675 @@
+{
+    "name": "infoblox-bloxone-threat-v2",
+    "version": "1.0.2",
+    "label": "Infoblox BloxOne Threat Defense",
+    "description": "Infoblox BloxOne Threat Defense provides foundational security that improves the efficiency of security operations centers by streamlining and automating threat response, reducing complexity, and enhancing the capabilities and performance of existing security investments.",
+    "publisher": "Fortinet SE",
+    "icon_small_name": "small.png",
+    "icon_large_name": "large.png",
+    "category": "network_security",
+    "configuration": {
+        "fields": [
+            {
+                "title": "Server URL",
+                "type": "text",
+                "name": "server_url",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "value": "https://csp.infoblox.com",
+                "tooltip": "Server URL of the Infoblox BloxOne Threat Defense server to which you will connect and perform automated operations."
+            },
+            {
+                "title": "API Key",
+                "type": "password",
+                "name": "api_key",
+                "required": true,
+                "visible": true,
+                "editable": true,
+                "tooltip": "API Key of the Infoblox BloxOne Threat Defense endpoint server to which you will connect and perform the automated operations."
+            },
+            {
+                "title": "Verify SSL",
+                "type": "checkbox",
+                "name": "verify",
+                "required": false,
+                "visible": true,
+                "editable": true,
+                "value": true
+            }
+        ]
+    },
+    "operations": [
+        {
+            "operation": "get_named_lists",
+            "title": "Get Named Lists",
+            "description": "Retrieves information on all Named List objects or specific Named List objects for the account based on the input parameters you have specified.",
+            "annotation": "get_named_lists",
+            "category": "investigation",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Filter",
+                    "type": "text",
+                    "name": "_filter",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "A collection of response resources can be filtered by a logical expression string that includes JSON tag references to values in each resource, literal values, and logical operators. If a resource does not have the specified tag, its value is assumed to be null. Note literal values include numbers (integer and floating-point), and quoted (both single- or double-quoted) literal strings, and 'null\u2019 Grouping operators (and, or, not, ()) are not supported."
+                },
+                {
+                    "title": "Fields",
+                    "type": "text",
+                    "name": "_fields",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Specify a CSV list of JSON tag names using which you want to retrieve Named List objects from Infoblox BloxOne Threat Defense."
+                },
+                {
+                    "title": "Offset",
+                    "type": "integer",
+                    "name": "_offset",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "The integer index (zero-origin) of the offset into a collection of resources. If omitted or null the value is assumed to be '0\u2019."
+                },
+                {
+                    "title": "Limit",
+                    "type": "integer",
+                    "name": "_limit",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "The integer number of the resources to be returned in the response. The service might impose maximum value. If omitted the service might impose a default value."
+                },
+                {
+                    "title": "Page Token",
+                    "type": "text",
+                    "name": "_page_token",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "The service-defined string used to identify a page of resources. A null value indicates the first page."
+                }
+            ],
+            "visible": true,
+            "output_schema": {
+                "results": [
+                    {
+                        "created_time": "",
+                        "description": "",
+                        "id": "",
+                        "items": [],
+                        "name": "",
+                        "policy_id": "",
+                        "updated_time": ""
+                    }
+                ]
+            },
+            "open": false
+        },
+        {
+            "operation": "get_specific_named_list",
+            "title": "Get Specific Named List",
+            "description": "Retrieves information on the specified Named List object for the account based on the ID of the named list and other input parameters you have specified.",
+            "annotation": "get_specific_named_list",
+            "category": "investigation",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "ID",
+                    "type": "text",
+                    "name": "id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "The ID of the named list whose objects you want to retrieve from Infoblox BloxOne Threat Defense."
+                },
+                {
+                    "title": "Fields",
+                    "type": "text",
+                    "name": "_fields",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Specify a CSV list of JSON tag names using which you want to retrieve Named List objects from Infoblox BloxOne Threat Defense."
+                }
+            ],
+            "visible": true,
+            "output_schema": {
+                "results": {
+                    "confidence_level": [],
+                    "created_time": "",
+                    "description": "",
+                    "id": "",
+                    "item_count": "",
+                    "items": [],
+                    "items_described": [
+                        {
+                            "description": "",
+                            "item": ""
+                        }
+                    ],
+                    "name": "",
+                    "policies": [],
+                    "threat_level": [],
+                    "type": "",
+                    "updated_time": ""
+                }
+            },
+            "open": false
+        },
+        {
+            "operation": "add_item_into_named_list",
+            "title": "Add Item into Named List",
+            "description": "Adds FQDN or IPv4 addresses into specified whitelists and blacklists for additional protection.",
+            "annotation": "add_item_into_custom_list",
+            "category": "miscellaneous",
+            "enabled": true,
+            "visible": true,
+            "parameters": [
+                {
+                    "title": "ID",
+                    "type": "text",
+                    "name": "id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Provide the custom named list object identifier."
+                },
+                {
+                    "title": "Item",
+                    "type": "text",
+                    "name": "items",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Provide CSV list of the FQDN or IPv4 addresses to define whitelists and blacklists for additional protection."
+                },
+                {
+                    "title": "Description Type",
+                    "type": "select",
+                    "name": "description_type",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Select description type one of the following.",
+                    "options": [
+                        "Individual",
+                        "Common"
+                    ]
+                },
+                {
+                    "title": "Path",
+                    "type": "text",
+                    "name": "path",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Provide the set of field mask paths."
+                }
+            ],
+            "output_schema": {
+                "success": {
+                    "code": "",
+                    "status": ""
+                }
+            },
+            "open": false
+        },
+        {
+            "operation": "remove_item_from_named_list",
+            "title": "Remove Item From Named List",
+            "description": "Remove FQDN or IPv4 addresses into specified whitelists and blacklists for additional protection.",
+            "annotation": "remove_item_from_named_list",
+            "category": "miscellaneous",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "ID",
+                    "type": "text",
+                    "name": "id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Provide the named list object identifier."
+                },
+                {
+                    "title": "Item",
+                    "type": "text",
+                    "name": "items",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Provide CSV list of the FQDN or IPv4 addresses to define whitelists and blacklists for additional protection."
+                },
+                {
+                    "title": "Description Type",
+                    "type": "select",
+                    "name": "description_type",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Select description type one of the following.",
+                    "options": [
+                        "Individual",
+                        "Common"
+                    ]
+                }
+            ],
+            "visible": true,
+            "output_schema": {},
+            "open": false
+        },
+        {
+            "operation": "dossier_source_lookup_by_target_type",
+            "title": "Dossier Source Lookup by Target Type",
+            "description": "Start a new Dossier lookup job for a specified indicator and source(s)",
+            "annotation": "dossier_source_lookup_by_target_type",
+            "category": "",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Value",
+                    "type": "text",
+                    "name": "value",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": ""
+                },
+                {
+                    "title": "Source",
+                    "type": "text",
+                    "name": "Source",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "dns or ptr"
+                },
+                {
+                    "title": "Wait",
+                    "type": "select",
+                    "name": "wait",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "whether to wait for the lookup to complete \u2013 true or false [defaults to false]",
+                    "options": [
+                        "False",
+                        "True"
+                    ]
+                },
+                {
+                    "title": "Type",
+                    "type": "select",
+                    "name": "type",
+                    "required": false,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Select description type one of the following.",
+                    "options": [
+                        "ip",
+                        "host",
+                        "url",
+                        "email",
+                        "hash"
+                    ]
+                }
+            ],
+            "visible": true,
+            "output_schema": [
+                {
+                    "status": ""
+                },
+                {
+                    "job_id": ""
+                },
+                {
+                    "job": {
+                        "id": "",
+                        "state": "",
+                        "status": "",
+                        "create_ts": "",
+                        "create_time": "",
+                        "start_ts": "",
+                        "start_time": "",
+                        "request_ttl": "",
+                        "result_ttl": "",
+                        "pending_tasks": [],
+                        "org": "",
+                        "user": "",
+                        "Authorization": "",
+                        "tasks_tbc": ""
+                    }
+                },
+                {
+                    "tasks": {
+                        "": {
+                            "id": "",
+                            "state": "",
+                            "status": "",
+                            "create_ts": "",
+                            "create_time": "",
+                            "params": {
+                                "type": "",
+                                "target": "",
+                                "source": ""
+                            },
+                            "results": "",
+                            "rl": ""
+                        }
+                    }
+                }
+            ],
+            "open": false
+        },
+        {
+            "operation": "dossier_lookup_job_status",
+            "title": "Dossier Lookup Job Status",
+            "description": "Returns status of a Dossier lookup job",
+            "annotation": "dossier_lookup_job_status",
+            "category": "",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Job ID",
+                    "type": "text",
+                    "name": "jobid",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Please Enter Job ID to Return Job "
+                }
+            ],
+            "visible": true,
+            "output_schema": [
+                {
+                    "status": ""
+                },
+                {
+                    "job_id": ""
+                },
+                {
+                    "job": {
+                        "id": "",
+                        "state": "",
+                        "status": "",
+                        "create_ts": "",
+                        "create_time": "",
+                        "request_ttl": "",
+                        "result_ttl": "",
+                        "completed_tasks": [],
+                        "org": "",
+                        "user": "",
+                        "tasks_tbc": ""
+                    }
+                },
+                {
+                    "tasks": {
+                        "": {
+                            "id": "",
+                            "state": "",
+                            "status": "",
+                            "create_ts": "",
+                            "create_time": "",
+                            "start_ts": "",
+                            "start_time": "",
+                            "end_ts": "",
+                            "end_time": "",
+                            "params": {
+                                "type": "",
+                                "target": "",
+                                "source": ""
+                            },
+                            "options": {},
+                            "results": "",
+                            "rl": ""
+                        }
+                    }
+                }
+            ],
+            "open": false
+        },
+        {
+            "operation": "dossier_lookup_job_returns",
+            "title": "Dossier Lookup Job Returns",
+            "description": "Returns results of a Dossier lookup job.",
+            "annotation": "dossier_lookup_job_return",
+            "category": "",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Job ID",
+                    "type": "text",
+                    "name": "jobid",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Please Enter Job ID to Return Results"
+                }
+            ],
+            "visible": true,
+            "output_schema": {
+                "state": "",
+                "status": "",
+                "job_id": "",
+                "results": []
+            },
+            "open": false
+        },
+        {
+            "operation": "dossier_indicator_source",
+            "title": "Dossier Indicator Source Lookup",
+            "description": "Returns a list of Dossier sources",
+            "annotation": "dossier_indicator_source",
+            "category": "",
+            "enabled": true,
+            "parameters": [],
+            "visible": true,
+            "output_schema": [
+                {
+                    "acs": ""
+                },
+                {
+                    "activity": ""
+                },
+                {
+                    "atp": ""
+                },
+                {
+                    "ccb": ""
+                },
+                {
+                    "custom_lists": ""
+                },
+                {
+                    "dns": ""
+                },
+                {
+                    "gcs": ""
+                },
+                {
+                    "geo": ""
+                },
+                {
+                    "gsb": ""
+                },
+                {
+                    "infoblox_web_cat": ""
+                },
+                {
+                    "inforank": ""
+                },
+                {
+                    "isight": ""
+                },
+                {
+                    "malware_analysis": ""
+                },
+                {
+                    "malware_analysis_v3": ""
+                },
+                {
+                    "pdns": ""
+                },
+                {
+                    "ptr": ""
+                },
+                {
+                    "rlabs": ""
+                },
+                {
+                    "rpz_feeds": ""
+                },
+                {
+                    "rwhois": ""
+                },
+                {
+                    "whitelist": ""
+                },
+                {
+                    "whois": ""
+                },
+                {
+                    "ssl_cert": ""
+                },
+                {
+                    "urlhaus": ""
+                },
+                {
+                    "nameserver": ""
+                },
+                {
+                    "threatfox": ""
+                },
+                {
+                    "tld_risk": ""
+                },
+                {
+                    "mandiant": ""
+                },
+                {
+                    "screenshot": ""
+                }
+            ],
+            "open": false
+        },
+        {
+            "operation": "dossier_source_lookup_by_indicator_type",
+            "title": "Dossier Source Lookup by Indicator Type",
+            "description": "Returns sources that support queries for an indicator type.",
+            "annotation": "dossier_source_lookup_by_indicator_type",
+            "category": "",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Target Type",
+                    "type": "select",
+                    "name": "target_type",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Select Target type one of the following.",
+                    "options": [
+                        "ip",
+                        "host",
+                        "email",
+                        "url",
+                        "hash"
+                    ]
+                }
+            ],
+            "visible": true,
+            "output_schema": {},
+            "open": false
+        },
+        {
+            "operation": "dossier_indicator_type_lookup_based_on_source",
+            "title": "Dossier Indicator Type Lookup Based on Source",
+            "description": "Return a list of indicator types supported by a given source.",
+            "annotation": "dossier_indicator_type_lookup_based_on_source",
+            "category": "",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Target Type",
+                    "type": "text",
+                    "name": "target_type",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "For Example atp , dns ..etc"
+                }
+            ],
+            "visible": true,
+            "output_schema": {},
+            "open": false
+        },
+        {
+            "operation": "dossier_lookup_job_status_by_specific_task",
+            "title": "Dossier Lookup Job Status by Specific Task",
+            "description": "Returns status of a single task in a Dossier lookup job.",
+            "annotation": "dossier_lookup_job_status_by_specific_task",
+            "category": "",
+            "enabled": true,
+            "parameters": [
+                {
+                    "title": "Task ID",
+                    "type": "text",
+                    "name": "task_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Please Enter Task ID which related to Job ID "
+                },
+                {
+                    "title": "Job ID",
+                    "type": "text",
+                    "name": "job_id",
+                    "required": true,
+                    "visible": true,
+                    "editable": true,
+                    "tooltip": "Please Enter Job ID "
+                }
+            ],
+            "visible": true,
+            "output_schema": [
+                {
+                    "state": ""
+                },
+                {
+                    "status": ""
+                },
+                {
+                    "task": {
+                        "id": "",
+                        "state": "",
+                        "status": "",
+                        "create_ts": "",
+                        "create_time": "",
+                        "start_ts": "",
+                        "start_time": "",
+                        "end_ts": "",
+                        "end_time": "",
+                        "params": {
+                            "type": "",
+                            "target": "",
+                            "source": ""
+                        },
+                        "options": {},
+                        "results": "",
+                        "rl": ""
+                    }
+                }
+            ],
+            "open": false
+        }
+    ],
+    "forked_from": "infoblox-bloxone-threat-defense_1_0_0",
+    "cs_approved": false,
+    "cs_compatible": true,
+    "help_online": "https://docs.fortinet.com/document/fortisoar/1.0.0/infoblox-bloxone-threat-defense/185/infoblox-bloxone-threat-defense-v1-0-0"
+}
